@@ -1,137 +1,175 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Contact | Créatif</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Bienvenue</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
- 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
     body {
         margin: 0;
         font-family: "Poppins", sans-serif;
-        background: #f2f2f2;
-        padding: 40px;
+        background: url("https://img.freepik.com/free-photo/happy-diverse-people-working-office_53876-104681.jpg")
+                    center/cover no-repeat;
+        backdrop-filter: blur(4px);
+        min-height: 100vh;
         display: flex;
         justify-content: center;
-    }
- 
-    .wrapper {
-        background: white;
-        border-radius: 16px;
+        align-items: center;
         padding: 40px;
+    }
+
+    .card {
+        width: 100%;
         max-width: 1200px;
-        width: 100%;
+        background: rgba(255,255,255,0.92);
+        border-radius: 18px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        padding: 40px 50px;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 40px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        animation: fadeIn 0.9s ease-in-out;
     }
- 
-    h1 {
-        font-size: 36px;
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    .welcome-block {
+        text-align: left;
+    }
+
+    .welcome-block h1 {
+        font-size: 38px;
         font-weight: 700;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+        color: #333;
     }
- 
-    .left-block p {
-        font-size: 16px;
-        margin-bottom: 20px;
+
+    .welcome-block p.subtitle {
+        font-size: 18px;
+        color: #666;
+        margin-bottom: 25px;
     }
- 
-    .left-block i {
-        font-size: 22px;
-        margin-right: 12px;
-    }
- 
-    .image-block img {
+
+    .profile-image img {
         width: 100%;
-        border-radius: 12px;
+        border-radius: 14px;
+        height: 350px;
         object-fit: cover;
-        height: 100%;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     }
- 
-    .right-block h2 {
+
+    .contact-info p {
+        font-size: 16px;
+        margin: 14px 0;
+    }
+
+    .contact-info i {
+        color: #e67e22;
+        font-size: 20px;
+        margin-right: 10px;
+    }
+
+    .form h2 {
         font-size: 30px;
         margin-bottom: 20px;
+        color: #444;
     }
- 
+
     label {
-        display: block;
-        margin-bottom: 6px;
         font-weight: 600;
+        display: block;
+        margin-bottom: 5px;
     }
- 
+
     input, textarea {
         width: 100%;
         padding: 14px;
-        border-radius: 8px;
-        border: 1px solid #d2d2d2;
-        background: #efefef;
-        margin-bottom: 20px;
+        border-radius: 10px;
+        border: 1px solid #bbb;
+        background: #f9f9f9;
+        margin-bottom: 18px;
         font-size: 16px;
-        outline: none;
+        transition: 0.25s;
     }
- 
+
+    input:focus, textarea:focus {
+        border-color: #e67e22;
+        background: white;
+        box-shadow: 0 0 5px rgba(230,126,34,0.4);
+    }
+
     button {
         width: 100%;
-        padding: 16px;
+        background: #e67e22;
         border: none;
-        background: #c96c15;
         color: white;
+        padding: 15px;
         font-size: 18px;
-        font-weight: 700;
-        border-radius: 10px;
+        font-weight: 600;
+        border-radius: 12px;
         cursor: pointer;
         transition: 0.3s;
+        box-shadow: 0 6px 15px rgba(230,126,34,0.3);
     }
- 
+
     button:hover {
-        background: #e07d1a;
+        background: #f08f2b;
+        transform: translateY(-2px);
+    }
+
+    button:active {
+        transform: scale(0.97);
     }
 </style>
 </head>
 <body>
- 
-<div class="wrapper">
- 
-    <!-- LEFT CONTACT INFOS -->
-<div class="left-block">
-<h1>Rencontre nous</h1>
- 
-        <p><i class="fa-solid fa-phone"></i> <strong>Téléphone fixe</strong><br>+1 232 434 3949</p>
- 
-        <p><i class="fa-solid fa-location-dot"></i> <strong>Notre bureau</strong><br>121 Rock Street, 21 Avenue,<br>New York, NY 92103-9000</p>
- 
-        <p><i class="fa-solid fa-envelope"></i> <strong>Graphique pour nous</strong><br>hi@ourcompany.com</p>
-</div>
- 
-    <!-- MIDDLE IMAGE -->
-<div class="image-block">
-<img src="https://img.freepik.com/free-photo/portrait-handsome-smiling-businessman-office_171337-17562.jpg" 
-             alt="Homme souriant professionnel" />
-</div>
- 
-    <!-- RIGHT CONTACT FORM -->
-<div class="right-block">
-<h2>Entrer en contact</h2>
- 
+
+<div class="card">
+
+    <!-- LEFT SIDE -->
+    <div class="welcome-block">
+        <h1>Bienvenue 👋</h1>
+        <p class="subtitle">Nous sommes ravis de vous accueillir.  
+        Laissez-nous un message, nous vous répondrons rapidement !</p>
+
+        <div class="profile-image">
+            <img src="https://img.freepik.com/free-photo/smiling-confident-businesswoman-posing-office_1262-20957.jpg"
+                 alt="Bienvenue">
+        </div>
+
+        <div class="contact-info">
+            <p><i class="fa-solid fa-phone"></i> +1 232 434 3949</p>
+            <p><i class="fa-solid fa-location-dot"></i> 121 Rock Street, New York, NY 92103</p>
+            <p><i class="fa-solid fa-envelope"></i> contact@company.com</p>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE : FORMULAIRE -->
+    <div class="form">
+        <h2>Écrivez-nous</h2>
+
         <form>
-<label for="nom">Nom</label>
-<input type="text" id="nom" placeholder="Votre nom">
- 
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" placeholder="Votre nom">
+
             <label for="prenom">Prénom</label>
-<input type="text" id="prenom" placeholder="Votre prénom">
- 
+            <input type="text" id="prenom" placeholder="Votre prénom">
+
             <label for="message">Message</label>
-<textarea id="message" placeholder="Écrivez votre message ici..."></textarea>
- 
+            <textarea id="message" rows="6" placeholder="Votre message..."></textarea>
+
             <button type="submit">Envoyer ✨</button>
-</form>
+        </form>
+    </div>
+
 </div>
- 
-</div>
- 
+
 </body>
 </html>
