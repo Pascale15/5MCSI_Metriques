@@ -1,93 +1,45 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
- 
+
 <script>
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(fetchCommits);
- 
+
 function fetchCommits() {
-    // Ton repo :
-    const url = "https://github.com/Pascale15/5MCSI_Metriques.git";
- 
+    const url = "https://api.github.com/repos/Pascale15/5MCSI_Metriques/commits";
+
     fetch(url)
         .then(response => response.json())
         .then(commits => {
             const minutesCount = {};
- 
+
             commits.forEach(commit => {
                 const date = commit.commit.author.date;
                 const minutes = new Date(date).getMinutes();
                 minutesCount[minutes] = (minutesCount[minutes] || 0) + 1;
             });
- 
+
             drawChart(minutesCount);
         })
         .catch(error => console.error("Erreur API GitHub :", error));
 }
- 
+
 function drawChart(minutesCount) {
     const dataArray = [['Minute', 'Nombre de commits']];
- 
     for (let i = 0; i < 60; i++) {
         dataArray.push([i.toString().padStart(2, '0'), minutesCount[i] || 0]);
     }
- 
+
     var data = google.visualization.arrayToDataTable(dataArray);
- 
     var options = {
         title: 'Histogramme des commits par minute',
- 
-        backgroundColor: '#F0F8FF',
- 
-        colors: ['#FF6F61'],
- 
-        legend: { position: 'none' },
- 
-        chartArea: {
-            top: 80,
-            width: '80%',
-            height: '70%'
-        },
- 
-        hAxis: {
-            title: 'Minutes',
-            textStyle: {
-                color: '#1E90FF',
-                fontSize: 12,
-                bold: true
-            },
-            titleTextStyle: {
-                color: '#00008B',
-                fontSize: 14,
-                bold: true
-            }
-        },
- 
-        vAxis: {
-            title: 'Nombre de commits',
-            textStyle: {
-                color: '#DC143C',
-                fontSize: 12,
-                bold: true
-            },
-            titleTextStyle: {
-                color: '#8B0000',
-                fontSize: 14,
-                bold: true
-            }
-        },
- 
-        titleTextStyle: {
-            color: '#4B0082',
-            fontSize: 22,
-            bold: true
-        }
+        legend: { position: 'none' }
     };
- 
+
     var chart = new google.visualization.ColumnChart(
         document.getElementById("chart_div")
     );
     chart.draw(data, options);
 }
 </script>
- 
+
 <div id="chart_div" style="width: 900px; height: 500px;"></div>
