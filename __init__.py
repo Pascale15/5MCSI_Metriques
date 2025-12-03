@@ -1,6 +1,7 @@
 from flask import Flask, render_template_string, render_template, jsonify
 from flask import render_template
 from flask import json
+import requests
 from datetime import datetime
 from urllib.request import urlopen
 import sqlite3
@@ -39,13 +40,21 @@ def histogramme():
 
 @app.route("/commits/")
 def commits_chart():
-
-    import requests  # sécurité si oublié plus haut
+    import requests
 
     url = "https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits"
 
-    headers = {"User-Agent": "AlwaysDataStudent"}  # obligatoire pour GitHub
+    # Fix obligatoire pour GitHub + AlwaysData
+    headers = {
+        "User-Agent": "AlwaysDataStudent",
+        "Accept": "application/vnd.github+json"
+    }
+
     response = requests.get(url, headers=headers)
+
+    # Si l'API plante → on évite l'erreur 500
+    if response.status_code != 200:
+        return f"Erreur GitHub API : {response.status_code}<br>{response.text}"
 
     commits = response.json()
 
@@ -60,7 +69,7 @@ def commits_chart():
             minute_count[minute] = minute_count.get(minute, 0) + 1
         except Exception as e:
             print("Erreur commit :", e)
-            pass
+            continue
 
     data_list = [["Minute", "Commits"]]
     for minute, count in sorted(minute_count.items()):
