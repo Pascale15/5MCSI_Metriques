@@ -37,33 +37,6 @@ def mongraphique():
 def histogramme():
     return render_template('histogramme/index.html')
 
-import requests  # <-- ajoute cette ligne en haut AVEC les autres imports
-
-
-@app.route('/commits/')
-def commits_chart():
-    url = "https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits"
-    response = requests.get(url)
-    commits = response.json()
-
-    # Tableau avec 60 cases pour compter les commits par minute
-    minutes_count = [0] * 60
-
-    for commit in commits:
-        try:
-            date_str = commit["commit"]["author"]["date"]
-            date_obj = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ")
-            minute = date_obj.minute
-            minutes_count[minute] += 1
-        except:
-            pass
-
-    # Format attendu par Google Charts
-    data = [["Minute", "Commits"]]
-    for i in range(60):
-        data.append([i, minutes_count[i]])
-
-    return render_template("commits.html", data=data)
 
 if __name__ == "__main__":
   app.run(debug=True)
