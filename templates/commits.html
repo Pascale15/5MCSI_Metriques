@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Commits par minute</title>
+
+    <!-- Google Charts -->
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script>
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            let chartData = {{ data|tojson }};
+
+            var data = google.visualization.arrayToDataTable(chartData);
+
+            var options = {
+                title: 'Nombre de commits par minute',
+                hAxis: { title: 'Minute' },
+                vAxis: { title: 'Commits' },
+                legend: 'none',
+                colors: ['#1A73E8']
+            };
+
+            var chart = new google.visualization.ColumnChart(
+                document.getElementById('commits_chart')
+            );
+
+            chart.draw(data, options);
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 30px;
+            text-align: center;
+        }
+        #commits_chart {
+            width: 80%;
+            height: 500px;
+            margin: auto;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>Histogramme des commits par minute</h1>
+
+<div id="commits_chart"></div>
+
+</body>
+</html>
