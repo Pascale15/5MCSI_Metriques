@@ -1,62 +1,33 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Commits par minute</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-    <!-- Google Charts -->
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-
-    <script>
+    <script type="text/javascript">
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
-
-            let chartData = {{ data|tojson }};
-
-            var data = google.visualization.arrayToDataTable(chartData);
+            var data = google.visualization.arrayToDataTable({{ data|tojson }});
 
             var options = {
                 title: 'Nombre de commits par minute',
-                hAxis: { title: 'Minute' },
+                legend: { position: 'bottom' },
+                hAxis: { title: 'Minute (0–59)' },
                 vAxis: { title: 'Commits' },
-                legend: 'none',
-                colors: ['#1A73E8']
+                colors: ['#1E88E5'],
+                backgroundColor: '#F8F8F8'
             };
 
-            var chart = new google.visualization.ColumnChart(
-                document.getElementById('commits_chart')
-            );
-
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
             chart.draw(data, options);
         }
     </script>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f2f2f2;
-            padding: 30px;
-            text-align: center;
-        }
-        #commits_chart {
-            width: 80%;
-            height: 500px;
-            margin: auto;
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-    </style>
-
 </head>
-<body>
-
-<h1>Histogramme des commits par minute</h1>
-
-<div id="commits_chart"></div>
-
+<body style="font-family: Arial; margin: 40px; background:#fafafa;">
+    <h1>Activité des Commits</h1>
+    <div id="chart" style="width:100%; height:500px;"></div>
 </body>
 </html>
