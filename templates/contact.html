@@ -2,48 +2,42 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Contact Professionnel</title>
+<title>Contact</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-        /* RESET & BASE */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
  
+    <style>
         body {
             font-family: "Inter", sans-serif;
-            background-color: #f5f5f5;
+            background: #e7e7e7;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
-            padding: 40px 0;
         }
  
         .container {
+            background: #f4f4f4;
+            width: 90%;
+            max-width: 1150px;
+            margin-top: 40px;
+            padding: 40px;
+            border-radius: 12px;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 40px;
-            width: 90%;
-            max-width: 1200px;
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
         }
  
         h2 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 600;
-            margin-bottom: 25px;
-            color: #333333;
+            margin-bottom: 20px;
         }
  
-        /* INFO BLOCK */
         .info-block {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 35px;
         }
  
         .info-item {
@@ -52,130 +46,119 @@
         }
  
         .info-item strong {
+            font-size: 18px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 16px;
-            margin-bottom: 6px;
-            color: #444444;
         }
  
-        .info-item img.icon {
-            width: 22px;
+        .icon {
+            width: 24px;
             opacity: 0.8;
         }
  
         .info-item span {
-            font-size: 14px;
-            color: #666666;
+            font-size: 15px;
+            color: #333;
             line-height: 1.5;
         }
  
-        /* IMAGE CENTRALE */
         .middle-image img {
             width: 100%;
             height: 100%;
             border-radius: 10px;
             object-fit: cover;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
  
-        /* FORMULAIRE */
-        .form-section {
-            display: flex;
-            flex-direction: column;
-        }
- 
-        .form-section input {
+        input {
             width: 100%;
-            padding: 12px 15px;
+            padding: 12px;
             margin-bottom: 15px;
             border-radius: 6px;
             border: 1px solid #ccc;
-            background-color: #f0f0f0;
-            font-size: 14px;
+            background: #dfdfdf;
+            font-size: 15px;
         }
  
-        .form-section input:focus {
+        input:focus {
             outline: none;
-            border-color: #c86e1a;
-            background-color: #fafafa;
+            border-color: #b66a2c;
+            background: #ececec;
         }
  
         .btn {
             width: 100%;
             padding: 14px;
-            background-color: #c86e1a;
+            background: #c86e1a;
             border: none;
             border-radius: 8px;
-            color: #ffffff;
+            color: white;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: 0.3s;
         }
  
         .btn:hover {
-            background-color: #a85e18;
+            background: #a85e18;
         }
  
-        /* RESPONSIVE */
-        @media (max-width: 1000px) {
+        @media (max-width: 900px) {
             .container {
                 grid-template-columns: 1fr;
-            }
- 
-            .middle-image {
-                order: -1;
-                margin-bottom: 25px;
             }
         }
 </style>
 </head>
+ 
 <body>
  
 <div class="container">
  
-    <!-- COLONNE GAUCHE: CONTACT -->
+    <!-- COLONNE GAUCHE -->
 <div class="info-block">
-<h2>Contactez-nous</h2>
+<h2>Rencontre nous</h2>
  
         <div class="info-item">
 <strong>
-<img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" class="icon" alt="Téléphone">
-                Téléphone
+<img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" class="icon">
+                Téléphone fixe
 </strong>
 <span>+1 232 434 3949</span>
 </div>
  
         <div class="info-item">
 <strong>
-<img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" class="icon" alt="Adresse">
-                Bureau
+<img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" class="icon">
+                Notre bureau
 </strong>
 <span>121 Rock Street, 21 Avenue,<br>New York, NY 92103-9000</span>
 </div>
  
         <div class="info-item">
 <strong>
-<img src="https://cdn-icons-png.flaticon.com/512/542/542689.png" class="icon" alt="Email">
-                Email
+<img src="https://cdn-icons-png.flaticon.com/512/542/542689.png" class="icon">
+                Graphique pour nous
 </strong>
 <span>hi@ourcompany.com</span>
 </div>
 </div>
  
-    <!-- IMAGE CENTRALE -->
+    <!-- IMAGE CENTRALE : HOMME PROFESSIONNEL -->
 <div class="middle-image">
-<img src="https://images.unsplash.com/photo-1556742400-b5c3c0e1e6e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8YnVzaW5lc3N8fHx8fDE2OTkxMDM2NzE&ixlib=rb-4.0.3&q=80&w=1080%22 alt="Bureau professionnel">
+<img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?q=80&w=1000" 
+             alt="Homme professionnel en chemise">
 </div>
  
-    <!-- COLONNE DROITE: FORMULAIRE -->
+    <!-- FORMULAIRE -->
 <div class="form-section">
 <h2>Entrer en contact</h2>
-<input type="text" placeholder="Votre nom">
-<input type="email" placeholder="Votre adresse email">
-<button class="btn">Envoyer</button>
+ 
+        <input type="text" placeholder="Entrer votre nom">
+<input type="email" placeholder="Entrer une adresse email valide">
+ 
+        <button class="btn">NOUS FAIRE PARVENIR</button>
 </div>
  
 </div>
