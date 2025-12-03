@@ -1,153 +1,184 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Créatif</title>
-
-    <style>
-        body {
+<meta charset="UTF-8">
+<title>Contact Professionnel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+        /* RESET & BASE */
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        body {
             font-family: "Inter", sans-serif;
-            height: 100vh;
+            background-color: #f5f5f5;
             display: flex;
             justify-content: center;
-            align-items: center;
-
-            /* ✨ Image de fond pleine page */
-            background-image: url("https://images.unsplash.com/photo-1503264116251-35a269479413");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-
-            /* effet foncé pour rendre le texte lisible */
-            position: relative;
+            padding: 40px 0;
         }
-
-        /* voile noir transparent */
-        body::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.45);
-            backdrop-filter: blur(3px);
+ 
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            width: 90%;
+            max-width: 1200px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
-
-        .contact-container {
-            position: relative;
-            width: 420px;
-            padding: 40px 45px;
-
-            /* ✨ Effet glassmorphism */
-            background: rgba(255, 255, 255, 0.12);
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(18px);
-
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-
-            color: white;
-            animation: fadein 1.1s ease-out, floaty 6s ease-in-out infinite;
-        }
-
-        /* Animation d'apparition fluide */
-        @keyframes fadein {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Léger mouvement flottant */
-        @keyframes floaty {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 28px;
+ 
+        h2 {
             font-size: 28px;
-            font-weight: 700;
-        }
-
-        label {
             font-weight: 600;
-            margin-bottom: 6px;
-            display: block;
-            margin-top: 10px;
+            margin-bottom: 25px;
+            color: #333333;
         }
-
-        input, textarea {
-            width: 100%;
-            padding: 12px 14px;
-            margin-top: 5px;
-            border: none;
-            border-radius: 12px;
-
-            background: rgba(255,255,255,0.2);
-            color: white;
-            font-size: 15px;
-
-            backdrop-filter: blur(6px);
-            transition: 0.25s;
+ 
+        /* INFO BLOCK */
+        .info-block {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
-
-        input:focus, textarea:focus {
-            background: rgba(255,255,255,0.35);
-            outline: none;
-            transform: scale(1.02);
+ 
+        .info-item {
+            display: flex;
+            flex-direction: column;
         }
-
-        textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        button {
-            width: 100%;
-            margin-top: 18px;
-            padding: 14px;
-            border: none;
-            border-radius: 12px;
-
-            background: linear-gradient(135deg, #6a8bff, #4a5bff);
-            color: white;
+ 
+        .info-item strong {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 16px;
-            font-weight: 700;
-
+            margin-bottom: 6px;
+            color: #444444;
+        }
+ 
+        .info-item img.icon {
+            width: 22px;
+            opacity: 0.8;
+        }
+ 
+        .info-item span {
+            font-size: 14px;
+            color: #666666;
+            line-height: 1.5;
+        }
+ 
+        /* IMAGE CENTRALE */
+        .middle-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+ 
+        /* FORMULAIRE */
+        .form-section {
+            display: flex;
+            flex-direction: column;
+        }
+ 
+        .form-section input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+            font-size: 14px;
+        }
+ 
+        .form-section input:focus {
+            outline: none;
+            border-color: #c86e1a;
+            background-color: #fafafa;
+        }
+ 
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #c86e1a;
+            border: none;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
-            transition: 0.35s;
+            transition: all 0.3s;
         }
-
-        button:hover {
-            transform: scale(1.06);
-            background: linear-gradient(135deg, #7a9aff, #5566ff);
-            box-shadow: 0 0 12px rgba(255,255,255,0.4);
+ 
+        .btn:hover {
+            background-color: #a85e18;
         }
-
-        button:active {
-            transform: scale(0.97);
+ 
+        /* RESPONSIVE */
+        @media (max-width: 1000px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+ 
+            .middle-image {
+                order: -1;
+                margin-bottom: 25px;
+            }
         }
-    </style>
-
+</style>
 </head>
 <body>
-
-    <div class="contact-container">
-        <h1>💌 Laissez-moi un message</h1>
-
-        <form>
-            <label for="nom">Nom</label>
-            <input type="text" id="nom" placeholder="Votre nom">
-
-            <label for="prenom">Prénom</label>
-            <input type="text" id="prenom" placeholder="Votre prénom">
-
-            <label for="message">Message</label>
-            <textarea id="message" placeholder="Écrivez votre message ici..."></textarea>
-
-            <button type="submit">Envoyer ✨</button>
-        </form>
-    </div>
-
+ 
+<div class="container">
+ 
+    <!-- COLONNE GAUCHE: CONTACT -->
+<div class="info-block">
+<h2>Contactez-nous</h2>
+ 
+        <div class="info-item">
+<strong>
+<img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" class="icon" alt="Téléphone">
+                Téléphone
+</strong>
+<span>+1 232 434 3949</span>
+</div>
+ 
+        <div class="info-item">
+<strong>
+<img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" class="icon" alt="Adresse">
+                Bureau
+</strong>
+<span>121 Rock Street, 21 Avenue,<br>New York, NY 92103-9000</span>
+</div>
+ 
+        <div class="info-item">
+<strong>
+<img src="https://cdn-icons-png.flaticon.com/512/542/542689.png" class="icon" alt="Email">
+                Email
+</strong>
+<span>hi@ourcompany.com</span>
+</div>
+</div>
+ 
+    <!-- IMAGE CENTRALE -->
+<div class="middle-image">
+<img src="https://images.unsplash.com/photo-1556742400-b5c3c0e1e6e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8YnVzaW5lc3N8fHx8fDE2OTkxMDM2NzE&ixlib=rb-4.0.3&q=80&w=1080%22 alt="Bureau professionnel">
+</div>
+ 
+    <!-- COLONNE DROITE: FORMULAIRE -->
+<div class="form-section">
+<h2>Entrer en contact</h2>
+<input type="text" placeholder="Votre nom">
+<input type="email" placeholder="Votre adresse email">
+<button class="btn">Envoyer</button>
+</div>
+ 
+</div>
+ 
 </body>
 </html>
