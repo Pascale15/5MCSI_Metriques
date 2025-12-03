@@ -37,19 +37,16 @@ def histogramme():
     return render_template('histogramme/index.html')
 
 
-@app.route('/extract-minutes/<date_string>')
-def extract_minutes(date_string):
-        date_object = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%SZ')
-        minutes = date_object.minute
-        return jsonify({'minutes': minutes})
-
-
 @app.route("/commits/")
 def commits_chart():
 
-    # API GitHub
+    import requests  # sécurité si oublié plus haut
+
     url = "https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits"
-    response = requests.get(url)
+
+    headers = {"User-Agent": "AlwaysDataStudent"}  # obligatoire pour GitHub
+    response = requests.get(url, headers=headers)
+
     commits = response.json()
 
     minute_count = {}
@@ -61,16 +58,15 @@ def commits_chart():
             minute = date_obj.minute
 
             minute_count[minute] = minute_count.get(minute, 0) + 1
-        except:
+        except Exception as e:
+            print("Erreur commit :", e)
             pass
 
-    # Liste pour Google Charts
     data_list = [["Minute", "Commits"]]
     for minute, count in sorted(minute_count.items()):
         data_list.append([minute, count])
 
     return render_template("commits.html", data=data_list)
-
 
 
 if __name__ == "__main__":
