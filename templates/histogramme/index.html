@@ -1,64 +1,49 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Histogramme des températures – Tawarano</title>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Histogramme Tawarano</title>
 
-    <!-- API Google Charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
     <script type="text/javascript">
-        // Chargement du package "corechart"
-        google.charts.load("current", {packages:["corechart"]});
-        google.charts.setOnLoadCallback(drawChart);
+      google.charts.load('current', {packages: ['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
 
-        function drawChart() {
-            // Exemple de données : températures mensuelles
-            var data = google.visualization.arrayToDataTable([
-                ['Mois', 'Température (°C)'],
-                ['Janvier',  12],
-                ['Février',  14],
-                ['Mars',     18],
-                ['Avril',    22],
-                ['Mai',      26],
-                ['Juin',     30],
-                ['Juillet',  33],
-                ['Août',     32],
-                ['Septembre',28],
-                ['Octobre',  23],
-                ['Novembre', 18],
-                ['Décembre', 14]
-            ]);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Mois', 'Température'],
+          ['Janvier', 12],
+          ['Février', 14],
+          ['Mars', 18],
+          ['Avril', 22],
+          ['Mai', 26],
+          ['Juin', 30],
+          ['Juillet', 33],
+          ['Août', 32],
+          ['Septembre', 28],
+          ['Octobre', 23],
+          ['Novembre', 18],
+          ['Décembre', 14]
+        ]);
 
-            var options = {
-                title: 'Évolution des températures à Tawarano',
-                legend: { position: 'none' },
-                hAxis: { title: 'Mois' },
-                vAxis: { title: 'Température (°C)' },
-                bar: { groupWidth: "60%" }
-            };
+        var options = {
+          title: 'Températures de Tawarano',
+          hAxis: {title: 'Mois'},
+          vAxis: {title: 'Température (°C)'},
+          legend: {position: 'none'}
+        };
 
-            var chart = new google.visualization.ColumnChart(
-                document.getElementById('chart_div')
-            );
-            chart.draw(data, options);
-        }
+        var chart = new google.visualization.ColumnChart(
+          document.getElementById('chart_div')
+        );
+
+        chart.draw(data, options);
+      }
     </script>
+  </head>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-        }
-        #chart_div {
-            width: 900px;
-            height: 500px;
-        }
-    </style>
-</head>
-
-<body>
-    <h1>Histogramme des températures – Tawarano</h1>
-    <div id="chart_div"></div>
-</body>
+  <body>
+    <h1>Histogramme des températures de Tawarano</h1>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
 </html>
